@@ -31,6 +31,9 @@ function assertGate(line: string): number {
 
 const line = horoscopeLine();
 const size = assertGate(line);
+if (horoscopeLine() !== line) {
+  throw new Error("horoscope is not deterministic");
+}
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 mkdirSync(outDir, { recursive: true });
